@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/homeContainer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HomeFragment">
+
+    <ProgressBar
+        android:id="@+id/progress_home"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:scrollbarStyle="outsideOverlay"
+        android:translationZ="90dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/totalcasehead"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="5dp"
+        android:text="Total Cases"
+        android:textColor="@color/white"
+        android:textSize="50dp"
+        android:translationZ="90dp"
+        app:layout_constraintLeft_toLeftOf="@id/cardviewTotalCases"
+        app:layout_constraintTop_toTopOf="@id/cardviewTotalCases" />
+
+    <TextView
+        android:id="@+id/tvtotalCase"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="10dp"
+        android:text="12345"
+        android:textColor="@color/white"
+        android:textSize="30dp"
+        android:translationZ="90dp"
+        app:layout_constraintLeft_toLeftOf="@id/cardviewTotalCases"
+        app:layout_constraintTop_toBottomOf="@id/totalcasehead" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardviewTotalCases"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="10dp"
+        app:cardCornerRadius="20dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:background="@drawable/corona1"></ImageView>
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/activecasehead"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="5dp"
+        android:text="Active"
+        android:textColor="@color/white"
+        android:textSize="40dp"
+        android:translationZ="90dp"
+        app:layout_constraintLeft_toLeftOf="@id/cardviewActiveCases"
+        app:layout_constraintTop_toTopOf="@id/cardviewActiveCases" />
+
+    <TextView
+        android:id="@+id/tvactiveCase"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:text="12345"
+        android:textColor="@color/white"
+        android:textSize="30dp"
+        android:translationZ="90dp"
+        app:layout_constraintLeft_toLeftOf="@+id/cardviewActiveCases"
+        app:layout_constraintTop_toBottomOf="@+id/activecasehead" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardviewActiveCases"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="10dp"
+        app:cardCornerRadius="20dp"
+        app:layout_constraintTop_toBottomOf="@id/cardviewTotalCases">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:background="@color/yellow"></ImageView>
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/dischargedcasehead"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="5dp"
+        android:text="Discharged"
+        android:textColor="@color/white"
+        android:textSize="35dp"
+        android:translationZ="90dp"
+        app:layout_constraintLeft_toLeftOf="@+id/cardviewDischargedCases"
+        app:layout_constraintTop_toTopOf="@+id/cardviewDischargedCases" />
+
+    <TextView
+        android:id="@+id/tvdischargedCase"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:text="12345"
+        android:textColor="@color/white"
+        android:textSize="25dp"
+        android:translationZ="90dp"
+        app:layout_constraintLeft_toLeftOf="@+id/cardviewDischargedCases"
+        app:layout_constraintTop_toBottomOf="@+id/dischargedcasehead" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardviewDischargedCases"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="10dp"
+        app:cardCornerRadius="20dp"
+        app:layout_constraintTop_toBottomOf="@id/cardviewActiveCases">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="@color/green"></ImageView>
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/deathcasehead"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="5dp"
+        android:text="Deaths"
+        android:textColor="@color/white"
+        android:textSize="35dp"
+        android:translationZ="90dp"
+        app:layout_constraintLeft_toLeftOf="@+id/cardviewDeathCases"
+        app:layout_constraintTop_toTopOf="@+id/cardviewDeathCases" />
+
+    <TextView
+        android:id="@+id/tvdeathCase"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:text="12345"
+        android:textColor="@color/white"
+        android:textSize="25dp"
+        android:translationZ="90dp"
+        app:layout_constraintLeft_toLeftOf="@+id/cardviewDeathCases"
+        app:layout_constraintTop_toBottomOf="@+id/deathcasehead" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardviewDeathCases"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        app:cardCornerRadius="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cardviewDischargedCases">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:background="@color/colorAccent" />
+
+    </androidx.cardview.widget.CardView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/homeFragment"
+        android:icon="@drawable/home"
+        android:title="Home"/>
+
+    <item
+        android:id="@+id/stateFragment"
+        android:icon="@drawable/logo"
+        android:title="State Wise Data"/>
+
+    <item
+        android:id="@+id/graphFragment"
+        android:icon="@drawable/logo"
+        android:title="History"/>
+
+</menu>
