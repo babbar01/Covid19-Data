@@ -15,6 +15,7 @@ import com.github.mikephil.charting.charts.PieChart
 import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
+import com.google.gson.Gson
 import kotlinx.android.synthetic.main.fragment_home.*
 
 
@@ -48,6 +49,26 @@ class HomeFragment : Fragment() {
                 val newRecovered = response.getString("recoveredNew").toInt()
                 val newDeaths = response.getString("deathsNew").toInt()
                 val previousDayTest = response.getString("previousDayTests").toInt()
+                val jsonArrayStateData = response.getJSONArray("regionData")
+
+                val lengthStateJsonArray = jsonArrayStateData.length()
+
+                MainActivity.stateData = ArrayList()
+
+                // converting jsonarray into arraylist of kotlin stateItem object through Gson
+                for (i in 0 until lengthStateJsonArray) {
+                    Log.d(TAG, "onCreateView: response delivered $i")
+                    val jsonObject = jsonArrayStateData.getJSONObject(i).toString()
+
+                    Log.d(TAG, "onCreateView: $jsonObject ")
+
+                    try {
+                        val stateItemObject = Gson().fromJson(jsonObject, StateItem::class.java)
+                        MainActivity.stateData!!.add(stateItemObject)   // we know that statedata is not null , it will return exception if it is null
+                    } catch (e: Exception) {
+                        Log.d(TAG, "onCreateView: ${e.message}")
+                    }
+                }
 
                 txt_total.text = confirmedCases.toString()
                 txt_deaths.text = deathCases.toString()
@@ -76,7 +97,7 @@ class HomeFragment : Fragment() {
                 if (container != null) {
                     set.setColors(
                         ContextCompat.getColor(container.context, R.color.color_confirmed),
-                        ContextCompat.getColor(container.context,  R.color.color_death),
+                        ContextCompat.getColor(container.context, R.color.color_death),
                         ContextCompat.getColor(container.context, R.color.color_recovered)
                     )
                 }
@@ -89,15 +110,20 @@ class HomeFragment : Fragment() {
                     holeRadius = 70f
                     centerText = "$activeCases Cases Active"
                     if (container != null) {
-                        setCenterTextColor(ContextCompat.getColor(container.context,R.color.pieCenterText))
-                        setHoleColor(ContextCompat.getColor(container.context,R.color.card_grey))
+                        setCenterTextColor(
+                            ContextCompat.getColor(
+                                container.context,
+                                R.color.pieCenterText
+                            )
+                        )
+                        setHoleColor(ContextCompat.getColor(container.context, R.color.card_grey))
                     }
 
                     legend.isEnabled = false
                     setDrawEntryLabels(false)
                     description.isEnabled = false
 
-                    animateXY(1000,1000)
+                    animateXY(1000, 1000)
                 }
 
 
@@ -107,7 +133,6 @@ class HomeFragment : Fragment() {
 
 
                 pieChart.invalidate()
-
 
 
             },

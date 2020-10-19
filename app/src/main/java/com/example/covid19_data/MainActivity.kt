@@ -9,6 +9,11 @@ import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
+
+    companion object{
+        var stateData:ArrayList<StateItem>? = null
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -17,7 +22,7 @@ class MainActivity : AppCompatActivity() {
 
         val navController = findNavController(R.id.navhost);
 
-//        setupActionBarWithNavController(navController)
+//        setupActionBarWithNavController(navController)    // shows name of fragment on action bar
 
         bottomNavigation.setupWithNavController(navController)
 
