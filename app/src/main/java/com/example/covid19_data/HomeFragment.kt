@@ -9,9 +9,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.android.volley.Request
-import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
-import com.github.mikephil.charting.charts.PieChart
 import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
@@ -22,7 +20,7 @@ import kotlinx.android.synthetic.main.fragment_home.*
 class HomeFragment : Fragment() {
 
     companion object {
-        val TAG = "mytag"
+        const val TAG = "mytag"
     }
 
     override fun onCreateView(
@@ -40,7 +38,7 @@ class HomeFragment : Fragment() {
         homeContainer?.visibility = View.GONE
 
         val jsonObjectRequest = JsonObjectRequest(Request.Method.GET, url, null,
-            Response.Listener { response ->
+            { response ->
                 val confirmedCases = response.getString("totalCases").toInt()
                 val activeCases = response.getString("activeCases")
                 val deathCases = response.getString("deaths").toInt()
@@ -103,7 +101,7 @@ class HomeFragment : Fragment() {
                 }
                 val data = PieData(set)
 
-                pieChart.legend
+//                pieChart.legend
                 pieChart.apply {
                     this.data = data
                     setDrawEntryLabels(false)
@@ -136,7 +134,7 @@ class HomeFragment : Fragment() {
 
 
             },
-            Response.ErrorListener { error ->
+            { error ->
 //                Toast.makeText(this,error.message,Toast.LENGTH_SHORT)
                 progress_home.visibility = View.GONE
                 Log.d(TAG, "onCreateView: error: ${error.message}")
