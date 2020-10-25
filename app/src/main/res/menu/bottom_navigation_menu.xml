@@ -8,12 +8,12 @@
 
     <item
         android:id="@+id/stateFragment"
-        android:icon="@drawable/logo"
+        android:icon="@drawable/india"
         android:title="State Wise Data"/>
 
     <item
         android:id="@+id/graphFragment"
-        android:icon="@drawable/logo"
+        android:icon="@drawable/history"
         android:title="History"/>
 
 </menu>
