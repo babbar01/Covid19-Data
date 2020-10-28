@@ -1,6 +1,11 @@
 package com.example.covid19_data
 
+import android.graphics.Color
 import android.os.Bundle
+import android.text.Spannable
+import android.text.SpannableStringBuilder
+import android.text.style.AbsoluteSizeSpan
+import android.text.style.ForegroundColorSpan
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -100,18 +105,35 @@ class HomeFragment : Fragment() {
                     )
                 }
                 val data = PieData(set)
+                val center_text = "$activeCases \n Cases Active"
+
+                val spannableCenterText = SpannableStringBuilder("$center_text")
+                spannableCenterText.setSpan(
+                    ForegroundColorSpan(Color.GRAY),
+                    spannableCenterText.length - 12,
+                    spannableCenterText.length,
+                    Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+                )
+
+                spannableCenterText.setSpan(
+                   AbsoluteSizeSpan(30),
+                    spannableCenterText.length - 12,
+                    spannableCenterText.length,
+                    Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+                )
 
 //                pieChart.legend
                 pieChart.apply {
                     this.data = data
                     setDrawEntryLabels(false)
                     holeRadius = 70f
-                    centerText = "$activeCases Cases Active"
+                    centerText = spannableCenterText
+                    setCenterTextSize(20f)
                     if (container != null) {
                         setCenterTextColor(
                             ContextCompat.getColor(
                                 container.context,
-                                R.color.pieCenterText
+                                R.color.white
                             )
                         )
                         setHoleColor(ContextCompat.getColor(container.context, R.color.card_grey))

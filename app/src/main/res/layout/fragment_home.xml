@@ -235,7 +235,7 @@
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
                android:text="@string/zero"
-               android:textColor="@color/white"
+               android:textColor="@color/color_recovered"
                android:textSize="@dimen/text_20" />
 
            <TextView
@@ -259,7 +259,7 @@
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
                android:textSize="@dimen/text_20"
-               android:textColor="@color/white"/>
+               android:textColor="@color/color_death"/>
 
            <TextView
                android:layout_width="wrap_content"
@@ -274,9 +274,9 @@
             android:id="@+id/txt_previousDayTests"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="30dp"
             android:text="@string/zero"
-            android:textColor="@color/white"
+            android:textColor="@color/color_active"
             android:textSize="@dimen/text_24"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -285,8 +285,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
             android:text="Test done during previous day"
             android:textColor="@color/color_active"
             android:textSize="@dimen/text_22"
@@ -294,6 +293,17 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txt_previousDayTests" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:text="@string/standing_with_frontiers"
+            android:textColor="@color/cool_grey"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

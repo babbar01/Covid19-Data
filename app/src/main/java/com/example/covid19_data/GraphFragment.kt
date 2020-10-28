@@ -19,6 +19,7 @@ import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet
 import com.google.android.material.snackbar.Snackbar
+import java.text.SimpleDateFormat
 
 
 class GraphFragment : Fragment() {
@@ -36,7 +37,7 @@ class GraphFragment : Fragment() {
 
         val url = "https://api.apify.com/v2/datasets/58a4VXwBBF0HtxuQa/items?format=json&clean=1"
 
-        var activeLineDataList : ArrayList<Entry> = ArrayList()
+        var activeLineDataList: ArrayList<Entry> = ArrayList()
         val lineChart = v.findViewById<LineChart>(R.id.lineChart)
         val progressBar = v.findViewById<ProgressBar>(R.id.progress_history_data)
 
@@ -54,20 +55,24 @@ class GraphFragment : Fragment() {
                     val lastUpdated = jsonObject.getString("lastUpdatedAtApify")
 
                     val lastUpdateDate = lastUpdated.split('T')[0]
+                    val lastUpdateTime = lastUpdated.split('T')[1]
+                    val ltime = lastUpdateTime.split('.')[0]
                     Log.d(HomeFragment.TAG, "inforloop: $lastUpdateDate")
                     val listDate = lastUpdateDate.split('-')
                     Log.d(HomeFragment.TAG, "inforloop: $listDate")
-                    val floatdate = listDate[0] + listDate[1] + listDate[2]
-                    Log.d(HomeFragment.TAG, "onCreateView: ${floatdate.toFloat()}")
+                    val floatdate = listDate[2] + "-" + listDate[1] + "-" + listDate[0]
+                    Log.d(HomeFragment.TAG, "onCreateView: ${floatdate}")
+
+                    val formatter = SimpleDateFormat("dd-MM-yyyy HH:mm:ss")
+                    val ldate = formatter.parse("$floatdate $lastUpdateTime")
+                    val timestamp = ldate.time
+                    Log.d(HomeFragment.TAG, "onCreateView: timestamp $timestamp")
 
                     if (activeCases != "null") activeLineDataList.add(
-                        Entry(
-                            floatdate.toFloat(),
-                            activeCases.toFloat()
-                        )
+                        Entry(timestamp.toFloat(), activeCases.toFloat())
                     )
 
-                    scrollText.append("Active Cases : $activeCases \n Last Updated : $lastUpdated \n\n")
+                    scrollText.append("Active Cases : $activeCases \n Last Updated : $floatdate $ltime \n\n")
                     scrollLayout.fullScroll(ScrollView.FOCUS_DOWN)
                 }
 
@@ -80,7 +85,8 @@ class GraphFragment : Fragment() {
                         setDrawFilled(true)
                         valueTextColor = ContextCompat.getColor(container.context, R.color.white)
                         color = ContextCompat.getColor(container.context, R.color.color_active)
-                        fillDrawable = ContextCompat.getDrawable(container.context, R.drawable.yellow_gradient)
+                        fillDrawable =
+                            ContextCompat.getDrawable(container.context, R.drawable.yellow_gradient)
                         setCircleColor(
                             ContextCompat.getColor(
                                 container.context,
@@ -100,20 +106,20 @@ class GraphFragment : Fragment() {
                     extraBottomOffset = 40f
                     if (container != null) {
                         xAxis.textColor = ContextCompat.getColor(container.context, R.color.white)
-                        xAxis.setDrawGridLines(false)
-                        xAxis.position = XAxis.XAxisPosition.BOTTOM
-                        xAxis.labelRotationAngle = -45F
-                        xAxis.valueFormatter = MyDateAxisValueFormatter()
-
-                        axisLeft.textColor = ContextCompat.getColor(container.context, R.color.white)
-                        axisLeft.setDrawGridLines(false)
-
-                        axisRight.isEnabled = false
-
-                        description = null
+                        axisLeft.textColor =
+                            ContextCompat.getColor(container.context, R.color.white)
                         legend.textColor = ContextCompat.getColor(container.context, R.color.white)
-                        animateXY(1500, 1000)
+                        marker = MyMarkerView(container.context,R.layout.markerview_layout)
                     }
+                    xAxis.setDrawGridLines(false)
+                    xAxis.position = XAxis.XAxisPosition.BOTTOM
+                    xAxis.labelRotationAngle = -45F
+                    xAxis.valueFormatter = MyDateAxisValueFormatter()
+
+                    axisLeft.setDrawGridLines(false)
+                    axisRight.isEnabled = false
+                    description = null
+                    animateXY(1500, 1000)
                     invalidate()
                 }
 
@@ -123,7 +129,11 @@ class GraphFragment : Fragment() {
                 progressBar.visibility = View.GONE
                 if (container != null) {
                     Log.d(HomeFragment.TAG, "onCreateView: container not null for toast")
-                    val snackbar = Snackbar.make(v,"Please try again by clicking History icon!",Snackbar.LENGTH_LONG)
+                    val snackbar = Snackbar.make(
+                        v,
+                        "Please try again by clicking History icon!",
+                        Snackbar.LENGTH_LONG
+                    )
                     snackbar.show()
                 }
                 Log.d(HomeFragment.TAG, "onCreateView: ${error.message}")

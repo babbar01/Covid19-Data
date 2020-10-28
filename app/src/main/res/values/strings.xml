@@ -8,4 +8,6 @@
     <string name="Confirmed">Confirmed</string>
     <string name="DataSource">Data source: https://www.mohfw.gov.in</string>
     <string name="deaths">Deaths</string>
+    <string name="pinch_to_zoom_in_and_out">Pinch to Zoom in and out</string>
+    <string name="standing_with_frontiers">We stand with everyone fighting on the frontlines</string>
 </resources>

@@ -5,14 +5,20 @@ import android.util.Log
 import com.github.mikephil.charting.components.AxisBase
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
 import com.github.mikephil.charting.formatter.ValueFormatter
+import java.text.SimpleDateFormat
+import java.util.*
 
 class MyDateAxisValueFormatter : ValueFormatter() {
 
     override fun getAxisLabel(value: Float, axis: AxisBase?): String {
         Log.d(HomeFragment.TAG, "getAxisLabel: $value")
-        val date = String.format("%f", value)
-        Log.d(HomeFragment.TAG, "getAxisLabel: $date")
-        val formattedDate = date.substring(6,8) + "-" + date.substring(4,6) + "-"  + date.substring(0,4)
-        return formattedDate
+        val timestamp = value.toLong()
+        Log.d(HomeFragment.TAG, "getAxisLabel: $timestamp")
+
+        val mdate = Date()
+        mdate.time = timestamp
+
+        val mdateFormatter = SimpleDateFormat("dd-MM-yyyy", Locale.ENGLISH)
+        return mdateFormatter.format(mdate)
     }
 }
