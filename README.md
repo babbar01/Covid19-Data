@@ -4,9 +4,9 @@ Covid19-Data is an app which displays daily updates about the data for India and
 
 ## Screen Shots
  <a href="url"><img src="https://user-images.githubusercontent.com/53184162/97489989-46426300-1986-11eb-82c0-19a1d93fe231.png" height = "500" width ="auto" ></a>
- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ &nbsp;&nbsp;&nbsp;
  <a href="url"><img src="https://user-images.githubusercontent.com/53184162/97490037-55c1ac00-1986-11eb-99a6-dcb8d49e32e8.png" height = "500" width ="auto" ></a>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ &nbsp;&nbsp;&nbsp;
  <a href="url"><img src="https://user-images.githubusercontent.com/53184162/97490051-59edc980-1986-11eb-9a0e-0a1f3c316a9f.png" height = "500" width ="auto" ></a>
 
 ### Reference
